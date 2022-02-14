@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script src="js/campo-minado.js"></script>
+</head>
+
+<body>
+    <div id="exibir-execucao"></div>
+    <script>
+        var campoMinado = new CampoMinado();
+        document.getElementById('exibir-execucao').innerHTML += '----------- Início do jogo -----------';
+        document.getElementById('exibir-execucao').innerHTML += '<pre>' + campoMinado.Tabuleiro() + '</pre>';
+
+        // Realize sua codificação a partir deste ponto, boa sorte!
+        for (let i = 0; i <= 71; i++) {
+            var linha = Math.floor(Math.random() * 9 ) + 1
+            var coluna = Math.floor(Math.random() * 9 ) + 1
+
+            campoMinado.Abrir(linha, coluna)
+            var status = campoMinado.JogoStatus()
+
+            if (status ==  2 || status === '*') {
+                document.getElementById('exibir-execucao').innerHTML += '<pre>' + `Abrindo casa: linha(${linha}) / coluna(${coluna})` + '</pre>';  
+                console.log('Entrou no if status == 2')
+                document.getElementById('exibir-execucao').innerHTML += '----------- Game Over -----------';
+                document.getElementById('exibir-execucao').innerHTML += '<pre>' + campoMinado.Tabuleiro() + '</pre>';
+                break;
+            }
+
+            if (status == 1) {
+                document.getElementById('exibir-execucao').innerHTML += '<pre>' + `Abrindo casa: linha(${linha}) / coluna(${coluna})` + '</pre>'; 
+                document.getElementById('exibir-execucao').innerHTML += '----------- Vitoria -----------';
+                document.getElementById('exibir-execucao').innerHTML += '<pre>' + campoMinado.Tabuleiro() + '</pre>'; 
+                break;
+            }
+
+            if(status !== 2 || status !== '*') {
+                document.getElementById('exibir-execucao').innerHTML += '<pre>' + `Abrindo casa: linha(${linha}) / coluna(${coluna})` + '</pre>';  
+                document.getElementById('exibir-execucao').innerHTML += '----------- Status: Jogo em aberto -----------';
+                document.getElementById('exibir-execucao').innerHTML += '<pre>' + campoMinado.Tabuleiro() + '</pre>';  
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
