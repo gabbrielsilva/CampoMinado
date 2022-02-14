@@ -22,8 +22,7 @@
             var status = campoMinado.JogoStatus()
 
             if (status ==  2 || status === '*') {
-                document.getElementById('exibir-execucao').innerHTML += '<pre>' + `Abrindo casa: linha(${linha}) / coluna(${coluna})` + '</pre>';  
-                console.log('Entrou no if status == 2')
+                document.getElementById('exibir-execucao').innerHTML += '<pre>' + `Abrindo casa: linha(${linha}) / coluna(${coluna})` + '</pre>'; 
                 document.getElementById('exibir-execucao').innerHTML += '----------- Game Over -----------';
                 document.getElementById('exibir-execucao').innerHTML += '<pre>' + campoMinado.Tabuleiro() + '</pre>';
                 break;
